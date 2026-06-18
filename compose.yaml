@@ -13,14 +13,16 @@ services:
       args:
         - DATABASE_URL=${DATABASE_URL}
     ports:
-      - "1001:3001"
+      - "3001:3001"
   qz-front:
     image: qz-front:latest
     container_name: qz-front
     environment:
-      - NEXT_PUBLIC_BACKEND_URL="http://qz-back:3001/"
+      - NEXT_PUBLIC_BACKEND_URL=http://qz-back:3001/
     build:
       context: ./frontend
       dockerfile: dockerfile
+      args:
+        - NEXT_PUBLIC_BACKEND_URL=http://qz-back:3001/
     ports:
-      - "1000:3000"
+      - "3000:3000"

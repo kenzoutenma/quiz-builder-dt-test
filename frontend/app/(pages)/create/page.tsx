@@ -64,7 +64,8 @@ export default function CreateQuizPage() {
     });
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}quizzes`, {
+      const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:3001/";
+      const res = await fetch(`${baseUrl}quizzes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, questions: formattedQuestions }),

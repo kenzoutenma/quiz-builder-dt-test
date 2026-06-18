@@ -29,7 +29,7 @@ export default function QuizDetailPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}quizzes/${id}`)
+    fetch(`/api/quizzes/${id}`)
       .then((res) => {
         if (res.status === 404) throw new Error("Quiz setup not found.");
         if (!res.ok) throw new Error("Failed to fetch quiz structural profile.");
