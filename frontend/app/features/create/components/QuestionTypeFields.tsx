@@ -52,7 +52,7 @@ export function CheckboxFields({ question, onChange, onAddOption, onOptionChange
           <div key={oIndex} className="flex items-center space-x-2">
             <input
               type="checkbox"
-              className="input"
+              className="checkbox"
               checked={question.correctAnswers.includes(opt) && opt !== ""}
               onChange={(e) => {
                 const answers = e.target.checked
