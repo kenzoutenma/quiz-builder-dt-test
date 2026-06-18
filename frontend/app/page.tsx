@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-6">
+    <div className="min-h-screen flex flex-col justify-start items-center p-6">
       <div className="max-w-xl w-full text-center space-y-8  p-10 rounded-2xl shadow-sm border">
 
         <div className="space-y-2">
@@ -14,15 +14,11 @@ export default function HomePage() {
           </p>
         </div>
 
-        <hr className="border-gray-100" />
-
-        {/* Navigation Action Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-          {/* Link to Create Page */}
           <Link
             href="/create"
-            className="group p-6 text-left border rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition duration-200"
+            className="group p-6 text-left border rounded-xl hover:border-blue-500 transition duration-200"
           >
             <div className="text-blue-600 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,7 +36,7 @@ export default function HomePage() {
           {/* Link to List Page */}
           <Link
             href="/quizzes"
-            className="group p-6 text-left border rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition duration-200"
+            className="group p-6 text-left border rounded-xl hover:border-blue-500  transition duration-200"
           >
             <div className="text-blue-600 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,11 +50,6 @@ export default function HomePage() {
               Browse your library, view layout configurations, or delete records.
             </p>
           </Link>
-
-        </div>
-
-        <div className="text-xs  font-mono">
-          Connected to Prisma DB Instance
         </div>
       </div>
     </div>
