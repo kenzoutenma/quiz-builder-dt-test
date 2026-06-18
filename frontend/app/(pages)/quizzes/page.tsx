@@ -53,32 +53,32 @@ export default function QuizListPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 gap-2.5">
         <h1 className="text-3xl font-bold">Available Quizzes</h1>
-        <Link href="/create" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <Link href="/create" className="btn btn-soft btn-primary">
           Create Quiz
         </Link>
       </div>
 
       {quizzes.length === 0 ? (
-        <p className="text-gray-500 text-center py-8">No quizzes found. Go make one!</p>
+        <p className="text-center py-8">No quizzes found. Go make one!</p>
       ) : (
         <div className="space-y-3">
           {quizzes.map((quiz) => (
             <div
               key={quiz.id}
-              className="flex justify-between items-center p-4 border rounded hover:bg-gray-50 transition"
+              className="flex justify-between items-center p-4 border rounded hover:bg-indigo-950 hover:text-indigo-100 transition"
             >
               <Link href={`/quizzes/${quiz.id}`} className="flex-1 block">
                 <div>
                   <h2 className="text-xl font-semibold text-blue-600 hover:underline">{quiz.title}</h2>
-                  <p className="text-sm text-gray-500">{quiz.questionCount} Questions</p>
+                  <p className="text-sm">{quiz.questionCount} Questions</p>
                 </div>
               </Link>
 
               <button
                 onClick={(e) => handleDelete(quiz.id, e)}
-                className="text-gray-400 hover:text-red-600 p-2 transition"
+                className=" hover:text-red-600 p-2 transition"
                 title="Delete Quiz"
                 aria-label="Delete"
               >

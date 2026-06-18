@@ -83,7 +83,9 @@ export default function CreateQuizPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1>Create New Quiz</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+        Create New Quiz
+      </h1>
       {error && <div className="bg-red-100 text-red-700 p-3 rounded mb-4">{error}</div>}
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -94,20 +96,14 @@ export default function CreateQuizPage() {
           </fieldset>
         </div>
 
-        <hr />
+        <div className="flex w-full flex-col">
+          <div className="divider">Questions</div>
+        </div>
 
         <div className="space-y-6">
           <h2 className="text-xl font-semibold">Questions</h2>
           {questions.map((q, qIndex) => (
-            <div key={qIndex} className="border-2 border-solid p-4 rounded-sm border-indigo-500" >
-              <button
-                type="button"
-                onClick={() => handleRemoveQuestion(qIndex)}
-                className="btn"
-              >
-                Remove
-              </button>
-
+            <div key={qIndex} className="flex flex-col gap-2.5 border-2 border-solid p-4 rounded-sm border-indigo-500" >
               <fieldset className="fieldset">
                 <legend className="fieldset-legend">Question Text</legend>
                 <input type="text" required className="input" placeholder="e.g., JavaScript Basics" value={q.text}
@@ -164,7 +160,6 @@ export default function CreateQuizPage() {
                 </div>
               )}
 
-              {/* CHECKBOX UI */}
               {q.type === "CHECKBOX" && (
                 <div className="space-y-2">
                   <fieldset className="fieldset">
@@ -197,12 +192,20 @@ export default function CreateQuizPage() {
                   <button
                     type="button"
                     onClick={() => handleAddOption(qIndex)}
-                    className="text-sm text-blue-600 underline"
+                    className="btn btn-soft w-full"
                   >
                     + Add Option
                   </button>
                 </div>
               )}
+
+              <button
+                type="button"
+                onClick={() => handleRemoveQuestion(qIndex)}
+                className="btn btn-soft btn-error"
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>
