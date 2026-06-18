@@ -1,0 +1,20 @@
+{
+	"title": "General Knowledge Quiz",
+	"questions": [
+		{
+			"text": "What is the capital of France?",
+			"type": "INPUT",
+			"correctAnswers": ["Paris"]
+		},
+		{
+			"text": "How many continents are there on Earth?",
+			"type": "INPUT",
+			"correctAnswers": ["7"]
+		},
+		{
+			"text": "What is the largest ocean on the planet?",
+			"type": "INPUT",
+			"correctAnswers": ["Pacific", "Pacific Ocean"]
+		}
+	]
+}

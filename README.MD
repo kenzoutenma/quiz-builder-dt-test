@@ -2,16 +2,28 @@
 
 ## Start frontend and backend
 
-To start app just run:
+### To start app at first run backend
 
 ```
-docker compose up
+cd ./backend
 ```
 
-All env already setted up
+create .env:
 
-- Set up database
-- Create sample quiz
+```
+DATABASE_URL="file:./dev.db"
+PORT=3001
+```
 
-- Set up database
-- Create sample quiz
+do migrations:
+
+```
+npm run prisma:generate && npm run prisma:migrate
+```
+
+run backend:
+
+```
+npm run build && npm run start
+```
+
