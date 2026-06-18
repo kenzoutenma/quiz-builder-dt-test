@@ -2,8 +2,12 @@ import { NextResponse } from "next/server";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001/";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
+type RouteContext = {
+  params: Promise<{ id: string }>;
+};
+
+export async function GET(request: Request, { params }: RouteContext) {
+  const { id } = await params;
 
   try {
     const res = await fetch(`${BACKEND_URL}quizzes/${id}`, {
@@ -25,8 +29,8 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
+export async function DELETE(request: Request, { params }: RouteContext) {
+  const { id } = await params;
 
   try {
     const res = await fetch(`${BACKEND_URL}quizzes/${id}`, {
