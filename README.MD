@@ -29,7 +29,7 @@ npm run build && npm run start
 
 ### Then start frontend
 
-Create .env to point backend:
+Create .env in `frontend` folder to point backend:
 
 ```
 NEXT_PUBLIC_BACKEND_URL="http://localhost:3001/"
@@ -46,3 +46,7 @@ Start frontend:
 ```
 npm run start
 ```
+
+## Create quiz
+
+Go to `http://localhost:3000/create` and enter fields to create new quiz
