@@ -1,0 +1,31 @@
+ARG NODE_VERSION=24.13.0-slim
+FROM node:${NODE_VERSION} AS base
+
+FROM base AS dependencies
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+FROM base AS builder
+WORKDIR /app
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+FROM base AS prod-dependencies
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+FROM base AS release
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app/dist ./dist
+COPY --from=prod-dependencies /app/node_modules ./node_modules
+COPY package*.json ./
+
+USER node
+EXPOSE 3000
+CMD ["node", "dist/index.js"]
