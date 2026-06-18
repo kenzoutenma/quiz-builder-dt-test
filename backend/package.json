@@ -8,7 +8,8 @@
     "dev": "tsx --watch --env-file .env src/index.ts",
     "start": "node --env-file .env dist/src/index.js",
     "lint": "eslint",
-    "build": "prisma generate && tsc && tsc-alias && cp -r generated dist/generated",
+    "build": "tsc && tsc-alias",
+    "prisma:deploy": "npx prisma migrate deploy && npx prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prepare": "husky"
