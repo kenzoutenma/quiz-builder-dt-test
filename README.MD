@@ -27,3 +27,22 @@ run backend:
 npm run build && npm run start
 ```
 
+### Then start frontend
+
+Create .env to point backend:
+
+```
+NEXT_PUBLIC_BACKEND_URL="http://localhost:3001/"
+```
+
+Build app:
+
+```
+npm run build
+```
+
+Start frontend:
+
+```
+npm run start
+```
