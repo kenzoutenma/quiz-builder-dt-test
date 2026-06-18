@@ -2,7 +2,18 @@
 
 ## Start frontend and backend
 
-### To start app at first run backend
+### Run it with docker
+
+Before entering on any folder create .env:
+```
+DATABASE_URL=file:./app/dev.db
+```
+And then
+```
+docker compose --env-file .env up
+```
+
+### To start app manually at first run backend
 
 ```
 cd ./backend

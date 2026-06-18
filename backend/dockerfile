@@ -1,0 +1,44 @@
+ARG NODE_VERSION=24.13.0-slim
+FROM node:${NODE_VERSION} AS base
+
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+
+FROM base AS dependencies
+WORKDIR /app
+COPY package*.json ./
+COPY prisma ./prisma/
+RUN npm ci
+
+FROM base AS builder
+WORKDIR /app
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY . .
+
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+RUN npx prisma generate
+
+RUN npm run build
+
+FROM base AS prod-dependencies
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+FROM base AS release
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+RUN chown -R node:node /app
+
+COPY --chown=node:node --from=builder /app/dist ./dist
+COPY --chown=node:node --from=prod-dependencies /app/node_modules ./node_modules
+COPY --chown=node:node ./prisma ./prisma
+COPY --chown=node:node ./prisma.config.ts ./
+COPY --chown=node:node package*.json ./
+
+USER node
+EXPOSE 3000
+
+CMD ["sh", "-c", "npm run prisma:deploy && node dist/src/index.js"]

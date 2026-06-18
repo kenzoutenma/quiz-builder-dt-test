@@ -16,7 +16,7 @@ export default function QuizListPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}quizzes`)
+    fetch(`/api/quizzes`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load quizzes");
         return res.json();
@@ -36,7 +36,7 @@ export default function QuizListPage() {
     if (!confirm("Are you sure you want to delete this quiz?")) return;
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}quizzes/${id}`, {
+      const res = await fetch(`/api/quizzes/${id}`, {
         method: "DELETE",
       });
 
