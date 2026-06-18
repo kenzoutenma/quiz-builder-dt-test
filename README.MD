@@ -2,12 +2,16 @@
 
 ## Start frontend and backend
 
-To run app use docker compose. Before start create .env with all required environments:
+To start app just run:
 
 ```
-DATABASE_URL="file:./db/name_of_db_file"
-NEXT_PUBLIC_BACKEND_URL="http://qz-back:3001/"
+docker compose up
 ```
+
+All env already setted up
+
+- Set up database
+- Create sample quiz
 
 - Set up database
 - Create sample quiz

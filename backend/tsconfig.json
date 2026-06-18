@@ -6,13 +6,14 @@
     "strict": true,
     "esModuleInterop": true,
     "ignoreDeprecations": "6.0",
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "./dist",
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "#/*": ["./*"]
     }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["dist"]
 }
